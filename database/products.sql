@@ -1,7 +1,7 @@
-CREATE TABLE public.products (
-	id int8 NOT NULL,
-	product_name varchar(255) NOT NULL,
-	price float8 NOT NULL,
-	quantity int4 NOT NULL,
-	CONSTRAINT products_pkey PRIMARY KEY (id)
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,2) NOT NULL CHECK (price >= 0),
+    stock INT NOT NULL CHECK (stock >= 0)
 );
