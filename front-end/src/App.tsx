@@ -9,7 +9,7 @@ function App() {
     <>
         <div className="div-header">
             <h1 className="App-header">
-                Eshop <a href="https://www.youtube.com/watch?v=k8JflBNovLE">Pepegoleni</a>
+                Eshop <a href="https://www.youtube.com/watch?v=k8JflBNovLE">Example</a>
             </h1>
         </div>
 
