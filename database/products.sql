@@ -1,9 +1,17 @@
-CREATE TABLE products (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    description TEXT,
-    price DECIMAL(10,2) NOT NULL CHECK (price >= 0),
-    stock INT NOT NULL CHECK (stock >= 0),
-    category_id INT REFERENCES categories(id) ON DELETE SET NULL,
-    created_at TIMESTAMP DEFAULT NOW()
+CREATE TABLE public.product (
+	id int4 DEFAULT nextval('products_id_seq'::regclass) NOT NULL,
+	"name" varchar(255) NOT NULL,
+	description text NULL,
+	price numeric(10, 2) NOT NULL,
+	stock int4 NOT NULL,
+	category int4 NULL,
+	created_at timestamp DEFAULT now() NULL,
+	CONSTRAINT products_pkey PRIMARY KEY (id),
+	CONSTRAINT products_price_check CHECK ((price >= (0)::numeric)),
+	CONSTRAINT products_stock_check CHECK ((stock >= 0))
 );
+
+
+-- public.product foreign keys
+
+ALTER TABLE public.product ADD CONSTRAINT products_category_id_fkey FOREIGN KEY (category) REFERENCES public.category(id) ON DELETE SET NULL;
